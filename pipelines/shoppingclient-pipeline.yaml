@@ -23,9 +23,7 @@ variables:
   dockerfilePath: 'Shopping/Shopping.Client/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'shoppingacr20662ab5-auth'
-
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  hostName: 'Default'
   
 
 stages:
@@ -35,7 +33,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: $(vmImageName)
+      name: $(hostName)
     steps:
     - task: Docker@2
       displayName: Build and push an image to container registry
@@ -59,7 +57,7 @@ stages:
   - deployment: Deploy
     displayName: Deploy
     pool:
-      vmImage: $(vmImageName)
+      name: $(hostName)
     environment: 'aspnetrunrundevops.default'
     strategy:
       runOnce:
