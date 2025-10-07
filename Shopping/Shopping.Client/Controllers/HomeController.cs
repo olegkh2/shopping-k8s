@@ -27,7 +27,7 @@ namespace Shopping.Client.Controllers
             var response = await _httpClient.GetAsync("/product");
             var content = await response.Content.ReadAsStringAsync();
             var productList = JsonConvert.DeserializeObject<IEnumerable<Product>>(content);
-
+            
             return View(productList);
         }
 
