@@ -58,7 +58,7 @@ stages:
     displayName: Deploy
     pool:
       name: $(hostName)
-    environment: 'aspnetrunrundevops.default'
+    environment: 'olegkh2shoppingk8s.default'
     strategy:
       runOnce:
         deploy:
